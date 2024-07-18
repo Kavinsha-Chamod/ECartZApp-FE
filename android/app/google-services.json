@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "306460917993",
+    "firebase_url": "https://ecartzapp-default-rtdb.asia-southeast1.firebasedatabase.app",
+    "project_id": "ecartzapp",
+    "storage_bucket": "ecartzapp.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:306460917993:android:2d73e70c2f663733cef078",
+        "android_client_info": {
+          "package_name": "com.ecartzapp"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "306460917993-8p2d39q4961ib6e6g73u87dj62ctmqrn.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDoZSuEbkX10qWthpu1NSsydSELTpV97N8"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "306460917993-8p2d39q4961ib6e6g73u87dj62ctmqrn.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
