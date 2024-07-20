@@ -35,7 +35,7 @@ export default function LoginForm({ onTabPress }) {
         method: 'email',
         email: email,
       });
-      navigation.replace('HomeScreen');
+      navigation.replace('Dashboard');
     } catch (error) {
       Alert.alert('Error', error || 'Something went wrong');
       console.log(error);

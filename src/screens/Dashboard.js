@@ -3,7 +3,6 @@ import React, {useState} from 'react'
 import {heightPercentageToDP as hp, widthPercentageToDP as wp} from 'react-native-responsive-screen';
 import { logout } from '../middlewares/api';
 import { useNavigation } from '@react-navigation/native';
-import CustomBtn from '../components/CustomBtn';
 import CustomNavBar from '../components/CustomNavBar';
 import HomeScreen from './HomeScreen';
 import SuperMarketScreen from './SuperMarketScreen';
@@ -14,12 +13,12 @@ import AccountScreen from './AccountScreen';
 
 export default function Dashboard() {
   const styles = useStyle();
-  const [currentScreen, setCurrentScreen] = useState('Home');
+  const [currentScreen, setCurrentScreen] = useState('HomeScreen');
   const navigation = useNavigation();
 
   const renderContent = () => {
     switch (currentScreen) {
-      case 'Home':
+      case 'HomeScreen':
         return <HomeScreen />;
       case 'Explore':
         return <SuperMarketScreen />;

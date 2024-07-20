@@ -12,10 +12,10 @@ export default function CustomNavBar({ onTabPress, activeTab }) {
 
   return (
     <View style={styles.header}>
-    <TouchableOpacity onPress={() => onTabPress('Home')}>
+    <TouchableOpacity onPress={() => onTabPress('HomeScreen')}>
     <View style={styles.IconContainer}>
-      <Icon name="storefront-outline" size={30} color={getIconColor('Home')} />
-      <Text style={[styles.IconTxt, { color: getTextColor('Home') }]}>Home</Text>
+      <Icon name="storefront-outline" size={30} color={getIconColor('HomeScreen')} />
+      <Text style={[styles.IconTxt, { color: getTextColor('HomeScreen') }]}>Home</Text>
     </View>
     </TouchableOpacity>
     <TouchableOpacity onPress={() => onTabPress('Explore')}>
