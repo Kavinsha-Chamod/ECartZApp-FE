@@ -23,7 +23,7 @@ export default function LoginForm({ onTabPress }) {
   const checkLoggedInStatus = async () => {
     const userToken = await AsyncStorage.getItem('userToken');
     if (userToken) {
-      navigation.replace('HomeScreen');
+      navigation.replace('Dashboard');
     }
   };
 
