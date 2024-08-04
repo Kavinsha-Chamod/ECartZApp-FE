@@ -11,10 +11,10 @@ import analytics from '@react-native-firebase/analytics';
 
 export default function LoginForm({ onTabPress }) {
   const styles = useStyle();
-  const navigation = useNavigation();
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [loading, setLoading] = useState(false);
+  const navigation = useNavigation();
 
   useEffect(() => {
     checkLoggedInStatus();
@@ -23,7 +23,7 @@ export default function LoginForm({ onTabPress }) {
   const checkLoggedInStatus = async () => {
     const userToken = await AsyncStorage.getItem('userToken');
     if (userToken) {
-      navigation.replace('HomeScreen');
+      navigation.replace('Dashboard');
     }
   };
 
@@ -35,7 +35,7 @@ export default function LoginForm({ onTabPress }) {
         method: 'email',
         email: email,
       });
-      navigation.replace('HomeScreen');
+      navigation.replace('Dashboard');
     } catch (error) {
       Alert.alert('Error', error || 'Something went wrong');
       console.log(error);

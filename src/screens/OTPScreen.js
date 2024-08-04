@@ -38,7 +38,7 @@ export default function OTPScreen({ route, navigation }) {
     try {
       await verifyOtp(email, otp);
       await signup({ email, password, name, number, otp });
-      navigation.replace('HomeScreen');
+      navigation.replace('Dashboard');
     } catch (error) {
       Alert.alert('Error', error);
       console.log(error);
