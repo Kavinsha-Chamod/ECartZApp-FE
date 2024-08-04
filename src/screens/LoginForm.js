@@ -11,10 +11,10 @@ import analytics from '@react-native-firebase/analytics';
 
 export default function LoginForm({ onTabPress }) {
   const styles = useStyle();
-  const navigation = useNavigation();
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [loading, setLoading] = useState(false);
+  const navigation = useNavigation();
 
   useEffect(() => {
     checkLoggedInStatus();

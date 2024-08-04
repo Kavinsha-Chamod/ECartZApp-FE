@@ -108,6 +108,20 @@ export const login = async (email, password) => {
   }
 };
 
+export const getUserData = async () => {
+  try {
+    const token = await AsyncStorage.getItem('userToken');
+    const response = await api.get('/users/user', {
+      headers: {
+        Authorization: `Bearer ${token}`
+      }
+    });
+    return response.data;
+  } catch (error) {
+    throw error;
+  }
+};
+
 export const logout = async () => {
   try {
     await AsyncStorage.removeItem('userToken');

@@ -1,6 +1,6 @@
-import { View, Text, useWindowDimensions, SafeAreaView, StatusBar, StyleSheet, Image, ScrollView, TouchableOpacity } from 'react-native'
-import React, {useState} from 'react'
-import {heightPercentageToDP as hp, widthPercentageToDP as wp} from 'react-native-responsive-screen';
+import { View, Text, useWindowDimensions, SafeAreaView, StatusBar, StyleSheet, Image, ScrollView, TouchableOpacity } from 'react-native';
+import React, { useState } from 'react';
+import { heightPercentageToDP as hp, widthPercentageToDP as wp } from 'react-native-responsive-screen';
 import { logout } from '../middlewares/api';
 import { useNavigation } from '@react-navigation/native';
 import CustomNavBar from '../components/CustomNavBar';
@@ -10,11 +10,10 @@ import CartScreen from './CartScreen';
 import FavoriteScreen from './FavoriteScreen';
 import AccountScreen from './AccountScreen';
 
-
 export default function Dashboard() {
   const styles = useStyle();
   const [currentScreen, setCurrentScreen] = useState('HomeScreen');
-  const navigation = useNavigation();
+
 
   const renderContent = () => {
     switch (currentScreen) {
@@ -42,21 +41,19 @@ export default function Dashboard() {
     <SafeAreaView style={styles.safeArea}>
       <StatusBar hidden={false} translucent={false} backgroundColor="transparent" barStyle="dark-content" />
       <ScrollView contentContainerStyle={styles.scrollView}>
-      <View style={styles.header}>
-       <Image style={styles.logo} source={require('../assets/images/dashboardLogo.png')} />
-      </View>
-      <View style={styles.content}>
-      {renderContent()}
-      </View>
-      <View style={styles.footer}>
-       <CustomNavBar onTabPress={setCurrentScreen} activeTab={currentScreen}/>
-      </View>
+        <View style={styles.content}>
+          {renderContent()}
+        </View>
       </ScrollView>
+      <View style={styles.footer}>
+        <CustomNavBar onTabPress={setCurrentScreen} activeTab={currentScreen} />
+      </View>
     </SafeAreaView>
-  )
+  );
 }
-function useStyle(){
-  const {width, height} = useWindowDimensions();
+
+function useStyle() {
+  const { width, height } = useWindowDimensions();
   return StyleSheet.create({
     safeArea: {
       flex: 1,
@@ -64,8 +61,6 @@ function useStyle(){
     },
     scrollView: {
       flexGrow: 1,
-      justifyContent: 'center',
-      alignItems: 'center',
     },
     header: {
       justifyContent: 'center',
@@ -78,14 +73,19 @@ function useStyle(){
       height: hp(10),
     },
     content: {
-      flex: 4,
+      flex: 1,
       justifyContent: 'center',
       alignItems: 'center',
-
+      paddingBottom: hp(10),
     },
     footer: {
+      width: wp(100),
+      height: hp(10),
       justifyContent: 'center',
       alignItems: 'center',
+      position: 'absolute',
+      bottom: 0,
+      backgroundColor: '#FFFFFF',
     },
   });
 }
