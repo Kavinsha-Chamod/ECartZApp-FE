@@ -1,19 +1,33 @@
 import React, { useState, useEffect } from 'react';
-import { View, Text, StyleSheet, SafeAreaView, ScrollView, TouchableOpacity, Image } from 'react-native';
+import {
+  View,
+  Text,
+  StyleSheet,
+  SafeAreaView,
+  ScrollView,
+  TouchableOpacity,
+  Image,
+} from 'react-native';
 import { useWindowDimensions } from 'react-native';
+import { useNavigation } from '@react-navigation/native';
 import NetInfo from '@react-native-community/netinfo';
-import { heightPercentageToDP as hp, widthPercentageToDP as wp } from 'react-native-responsive-screen';
+import {
+  heightPercentageToDP as hp,
+  widthPercentageToDP as wp,
+} from 'react-native-responsive-screen';
 import Greeting from '../components/Greeting';
 import LocationComponent from '../components/Location';
 import PosterCarousel from '../components/PromotionCarousel';
 import Icon from 'react-native-vector-icons/Feather';
 
-export default function HomeScreen() {
+export default function HomeScreen({ setCurrentScreen }) {
+  const navigation = useNavigation();
   const styles = useStyle();
   const [isConnected, setIsConnected] = useState(true);
+  const [pressedButton, setPressedButton] = useState(null); // Track which button is pressed
 
   useEffect(() => {
-    const unsubscribe = NetInfo.addEventListener(state => {
+    const unsubscribe = NetInfo.addEventListener((state) => {
       setIsConnected(state.isConnected);
     });
 
@@ -26,9 +40,17 @@ export default function HomeScreen() {
     return (
       <SafeAreaView style={styles.safeArea}>
         <View style={styles.noConnectionContainer}>
-          <Icon name="wifi-off" size={wp(20)} color="#7CBF41" style={styles.noConnectionIcon} />
+          <Icon
+            name="wifi-off"
+            size={wp(20)}
+            color="#7CBF41"
+            style={styles.noConnectionIcon}
+          />
           <Text style={styles.noConnectionText}>No internet connection</Text>
-          <Text style={styles.noConnectionSubText}>Your internet connection is currently not available please check or try again.</Text>
+          <Text style={styles.noConnectionSubText}>
+            Your internet connection is currently not available. Please check or
+            try again.
+          </Text>
         </View>
       </SafeAreaView>
     );
@@ -37,37 +59,124 @@ export default function HomeScreen() {
   return (
     <SafeAreaView style={styles.safeArea}>
       <ScrollView contentContainerStyle={styles.scrollView}>
-      <View style={styles.headLogo}>
-        <Image style={styles.logo} source={require('../assets/images/dashboardLogo.png')} />
+        <View style={styles.headLogo}>
+          <Image
+            style={styles.logo}
+            source={require('../assets/images/dashboardLogo.png')}
+          />
         </View>
         <View style={styles.header}>
-          <TouchableOpacity style={styles.categoryContainer}>
+          <TouchableOpacity
+            style={[
+              styles.categoryContainer,
+              pressedButton === 'SuperMarket' && { backgroundColor: '#7CBF41' },
+            ]}
+            onPressIn={() => setPressedButton('SuperMarket')}
+            onPressOut={() => setPressedButton(null)}
+            onPress={() => setCurrentScreen('SuperMarket')}
+          >
             <Text style={styles.categoryText}>Supermarket</Text>
-            <Image style={styles.icon} source={require('../assets/images/supermarket.png')} />
+            <Image
+              style={styles.icon}
+              source={require('../assets/images/supermarket.png')}
+            />
           </TouchableOpacity>
-          <TouchableOpacity style={styles.categoryContainer}>
+
+          <TouchableOpacity
+            style={[
+              styles.categoryContainer,
+              pressedButton === 'Pharmacy' && { backgroundColor: '#7CBF41' }, 
+            ]}
+            onPressIn={() => setPressedButton('Pharmacy')}
+            onPressOut={() => setPressedButton(null)}
+            onPress={() => setCurrentScreen('Pharmacy')}
+          >
             <Text style={styles.categoryText}>Pharmacy</Text>
-            <Image style={styles.icon} source={require('../assets/images/pharmacy.png')} />
+            <Image
+              style={styles.icon}
+              source={require('../assets/images/pharmacy.png')}
+            />
           </TouchableOpacity>
-          <TouchableOpacity style={styles.categoryContainer}>
+
+          <TouchableOpacity
+            style={[
+              styles.categoryContainer,
+              pressedButton === 'Stationary' && { backgroundColor: '#7CBF41' },
+            ]}
+            onPressIn={() => setPressedButton('Stationary')}
+            onPressOut={() => setPressedButton(null)}
+            onPress={() => setCurrentScreen('Stationary')}
+          >
             <Text style={styles.categoryText}>Stationary</Text>
-            <Image style={styles.icon} source={require('../assets/images/stationary.png')} />
+            <Image
+              style={styles.icon}
+              source={require('../assets/images/stationary.png')}
+            />
           </TouchableOpacity>
-          <TouchableOpacity style={styles.categoryContainer}>
+
+          <TouchableOpacity
+            style={[
+              styles.categoryContainer,
+              pressedButton === 'Alcohol' && { backgroundColor: '#7CBF41' },
+            ]}
+            onPressIn={() => setPressedButton('Alcohol')}
+            onPressOut={() => setPressedButton(null)}
+            onPress={() => setCurrentScreen('Alcohol')}
+          >
             <Text style={styles.categoryText}>Alcohol</Text>
-            <Image style={styles.icon} source={require('../assets/images/alcohol.png')} />
+            <Image
+              style={styles.icon}
+              source={require('../assets/images/alcohol.png')}
+            />
           </TouchableOpacity>
-          <TouchableOpacity style={styles.categoryContainer}>
+
+          <TouchableOpacity
+            style={[
+              styles.categoryContainer,
+              pressedButton === 'Gift' && { backgroundColor: '#7CBF41' },
+            ]}
+            onPressIn={() => setPressedButton('Gift')}
+            onPressOut={() => setPressedButton(null)}
+            onPress={() => setCurrentScreen('Gift')}
+          >
             <Text style={styles.categoryText}>Gift</Text>
-            <Image style={styles.icon} source={require('../assets/images/gift.png')} />
+            <Image
+              style={styles.icon}
+              source={require('../assets/images/gift.png')}
+            />
           </TouchableOpacity>
-          <TouchableOpacity style={styles.categoryContainer}>
+
+          <TouchableOpacity
+            style={[
+              styles.categoryContainer,
+              pressedButton === 'Beauty' && { backgroundColor: '#7CBF41' },
+            ]}
+            onPressIn={() => setPressedButton('Beauty')}
+            onPressOut={() => setPressedButton(null)}
+            onPress={() => setCurrentScreen('Beauty')}
+          >
             <Text style={styles.categoryText}>Beauty</Text>
-            <Image style={styles.icon} source={require('../assets/images/beauty.png')} />
+            <Image
+              style={styles.icon}
+              source={require('../assets/images/beauty.png')}
+            />
           </TouchableOpacity>
-          <TouchableOpacity style={[styles.categoryContainer, styles.fullWidthContainer]}>
+
+          <TouchableOpacity
+            style={[
+              styles.categoryContainer,
+              styles.fullWidthContainer,
+              pressedButton === 'Events' && { backgroundColor: '#7CBF41' },
+            ]}
+            onPressIn={() => setPressedButton('Events')}
+            onPressOut={() => setPressedButton(null)}
+            onPress={() => setCurrentScreen('Events')}
+          >
             <Text style={styles.categoryText}>Events</Text>
-            <Image style={styles.icon} source={require('../assets/images/event.png')} />
+            <Image
+              style={styles.icon}
+              source={require('../assets/images/event.png')}
+            />
           </TouchableOpacity>
         </View>
         <View style={styles.content}>
@@ -86,7 +195,7 @@ export default function HomeScreen() {
 }
 
 function useStyle() {
-  const { width, height } = useWindowDimensions();
+  const {width, height} = useWindowDimensions();
   return StyleSheet.create({
     safeArea: {
       flex: 1,
@@ -109,7 +218,7 @@ function useStyle() {
       alignItems: 'center',
       marginTop: hp(2),
     },
-    logo: { 
+    logo: {
       width: wp(50),
       height: hp(10),
     },

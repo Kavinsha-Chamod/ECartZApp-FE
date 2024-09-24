@@ -1,14 +1,21 @@
-import { View, Text, useWindowDimensions, SafeAreaView, StatusBar, StyleSheet, Image, ScrollView, TouchableOpacity } from 'react-native';
+import { View, useWindowDimensions, SafeAreaView, StatusBar, StyleSheet, ScrollView} from 'react-native';
 import React, { useState } from 'react';
 import { heightPercentageToDP as hp, widthPercentageToDP as wp } from 'react-native-responsive-screen';
 import { logout } from '../middlewares/api';
-import { useNavigation } from '@react-navigation/native';
 import CustomNavBar from '../components/CustomNavBar';
 import HomeScreen from './HomeScreen';
-import SuperMarketScreen from './SuperMarketScreen';
+import ExploreScreen from './ExploreScreen';
 import CartScreen from './CartScreen';
 import FavoriteScreen from './FavoriteScreen';
 import AccountScreen from './AccountScreen';
+import SuperMarketScreen from './SuperMarketScreen';
+import PharmacyScreen from './PharmacyScreen';
+import StationaryScreen from './StationaryScreen';
+import AlcoholScreen from './AlcoholScreen';
+import GiftScreen from './GiftScreen';
+import BeautyScreen from './BeautyScreen';
+import EventsScreen from './EventsScreen';
+
 
 export default function Dashboard() {
   const styles = useStyle();
@@ -18,17 +25,31 @@ export default function Dashboard() {
   const renderContent = () => {
     switch (currentScreen) {
       case 'HomeScreen':
-        return <HomeScreen />;
+        return <HomeScreen setCurrentScreen={setCurrentScreen} />;
       case 'Explore':
-        return <SuperMarketScreen />;
+        return <ExploreScreen />;
       case 'Cart':
         return <CartScreen />;
       case 'Favorite':
         return <FavoriteScreen />;
       case 'Account':
         return <AccountScreen />;
+      case 'SuperMarket':
+        return <SuperMarketScreen />;
+      case 'Pharmacy':
+        return <PharmacyScreen />;
+      case 'Stationary':
+        return <StationaryScreen />;
+      case 'Alcohol':
+        return <AlcoholScreen />;
+      case 'Gift':
+        return <GiftScreen />;
+      case 'Beauty':
+        return <BeautyScreen />;
+      case 'Events':
+        return <EventsScreen />;
       default:
-        return <HomeScreen />;
+        return <HomeScreen setCurrentScreen={setCurrentScreen} />;
     }
   };
 
