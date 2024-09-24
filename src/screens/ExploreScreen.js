@@ -3,15 +3,16 @@ import {useWindowDimensions} from 'react-native';
 import React from 'react';
 import {heightPercentageToDP as hp, widthPercentageToDP as wp,} from 'react-native-responsive-screen';
 
-export default function SuperMarketScreen() {
+
+export default function ExploreScreen() {
   const styles = useStyle();
   return (
     <SafeAreaView style={styles.safeArea}>
       <ScrollView contentContainerStyle={styles.scrollView}>
-        <View style={styles.header}><Text>Supermarket Screen</Text></View>
-        <View style={styles.content}></View>
-        <View style={styles.footer}>
+        <View style={styles.header}><Text>Explore</Text></View>
+        <View style={styles.content}>
         </View>
+        <View style={styles.footer}></View>
       </ScrollView>
     </SafeAreaView>
   );

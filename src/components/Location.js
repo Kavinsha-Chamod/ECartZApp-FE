@@ -12,7 +12,7 @@ const LocationComponent = () => {
 
   useEffect(() => {
     const getCurrentLocation = async (position) => {
-      console.log('Location fetched successfully');
+      // console.log('Location fetched successfully');
       const { latitude, longitude } = position.coords;
       setLocation({ latitude, longitude });
       
